@@ -1,5 +1,4 @@
-from driver_factory.driverfactory import driver
-from selenium.webdriver.common.by import By
+from driver_factory.driverfactory import driver, By
 
 
 class finders:
