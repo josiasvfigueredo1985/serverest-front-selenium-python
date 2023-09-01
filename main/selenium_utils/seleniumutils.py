@@ -7,10 +7,10 @@ from selenium_utils.selenium_interactions import interactions
 
 
 class utils(waits, file_upload, finders, information, interactions):
-    Close = driver.quit()
     By = By()
     waits = waits()
     fileupload = file_upload()
     finders = finders()
     info = information()
     interactions = interactions()
+    Driver = driver
