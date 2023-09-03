@@ -78,29 +78,51 @@ class metal_archives_page:
     submit_button_class_name = ".btn_submit"
     select_combobox_name = "type"
     """
-    For combobox and list, is recommended to use the locator from the whole element, instead 
-    of a single element, that because after find elements inside the parent element is possible
-    to interact with it is the same way a real user would do, also avoid to create 
+    For combobox and list, is recommended to use the locator from the whole element, instead of 
+    a single element, that because after find elements inside the parent element is possible to
+    interact with it is the same way a real user would do, also avoid to create 
     a single variable to each list option 
     """
     ########################################################################
     # Top Menu Box
-    """
-    Always prefer to use the element tag as identifier, in the case below the tag 'a' from href
-    was provided to reach a better performance, that way the XPATH only will search for a single element type
-    """
     help_link_xpath = "//a[text()='Help']"
     rules_link_xpath = "//a[text()='Rules']"
     store_link_xpath = "//a[text()='Store']"
     forum_link_xpath = "//a[text()='Forum']"
-
     faq_link_xpath = "//a[text()='FAQ']"
     support_us_link_xpath = "//a[text()='Support Us']"
     addons_help_link_xpath = "//a[text()='Add-ons']"
-
+    """
+    Always prefer to use the element tag as identifier, in the case below the tag 'a' from href
+    was provided to reach a better performance, that way the XPATH only will search for a single
+    element type.
+    """
     ########################################################################
     #### Advanced Search  #####
     # Search Bands
+    search_bands_tab_css = ".ui-state-default #ui-id-1"
+    band_name_css = "#bands #bandName"
+    band_genre_css = "#bands #genre"
+    country_type_css = "#bands .advancedSearchLeft .multiLink"
+    country_selection_css = "#bands #country"
+    year_formation_from_css = "#bands #yearCreationFrom"
+    year_formation_to_css = "#bands #yearCreationTo"
+    band_notes_css = "#bands #bandNotes"
+
+    exact_match_check_css = "#bands #exactMatchBand"
+    status_type_css = "#bands #link_status"
+    status_selection_css = "#bands #status"
+    themes_css = "#bands #themes"
+    city_state_prov_css = "#bands #location"
+    label_css = "#bands #bandLabelName"
+    indie_label_check_css = "#bands #indieLabelBand"
+
+    # Search Albums
+    search_albums_tab_css = ".ui-state-default #ui-id-2"
+
+    # Search Songs
+    search_songs_tab_css = ".ui-state-default #ui-id-3"
+
     """
     Nested lookup is useful to identify when you may have the same id for the same field
     on different tabs or pages.
@@ -126,27 +148,4 @@ class metal_archives_page:
     "#fruits .potatoes" -> potatoes class is not inside the fruits list
 
     """
-    search_bands_tab_css = ".ui-state-default #ui-id-1"
-    band_name_css = "#bands #bandName"
-    band_genre_css = "#bands #genre"
-    country_type_css = "#bands .advancedSearchLeft .multiLink"
-    country_selection_css = "#bands #country"
-    year_formation_from_css = "#bands #yearCreationFrom"
-    year_formation_to_css = "#bands #yearCreationTo"
-    band_notes_css = "#bands #bandNotes"
-
-    exact_match_check_css = "#bands #exactMatchBand"
-    status_type_css = "#bands #link_status"
-    status_selection_css = "#bands #status"
-    themes_css = "#bands #themes"
-    city_state_prov_css = "#bands #location"
-    label_css = "#bands #bandLabelName"
-    indie_label_check_css = "#bands #indieLabelBand"
-
-    # Search Albums
-    search_albums_tab_css = ".ui-state-default #ui-id-2"
-    # Your mappings go here :-)
-
-    # Search Songs
-    search_songs_tab_css = ".ui-state-default #ui-id-3"
     # Your mappings go here :-)
