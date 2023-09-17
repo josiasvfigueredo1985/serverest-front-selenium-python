@@ -7,9 +7,9 @@ Site used for this project: [Metal Archives](https://www.metal-archives.com/)
 
 ## Requirements
 
-- [Python](https://www.python.org/downloads/)
+- [Python](https://www.python.org/downloads/) (Mark option to add Python the system path before proceed to installation)
 - [Python VS Code Extensions](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-- [Selenium](https://www.selenium.dev/downlooads/)
+- [Selenium](https://www.selenium.dev/downlooads/)(Instalall according your OS)
 
 ## How to Run or Debug
 
