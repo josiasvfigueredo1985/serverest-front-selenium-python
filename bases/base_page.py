@@ -3,13 +3,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from utils.driver import Driver
 
 
 class BasePage:
-    utils = Driver()
-    driver = utils.get_driver()
-    timeout = 20
+    def __init__(self, driver: webdriver):
+        self.driver = driver
+        self.timeout = 20
 
     def wait_element_be_visible(self, locator):
         wait = WebDriverWait(self.driver, self.timeout)
