@@ -1,20 +1,33 @@
+"""Driver Factory Module"""
 from selenium import webdriver
 
 
 class DriverFactory:
-    def __init__(self):
-        self.__create_driver()
-        self.driver = self.__get_driver()
+    """# Driver Factory for Selenium WebDriver
+    - Singleton instance
+    - Can create instance for specific driver such as Chrome or Firefox
+    """
 
-    def __create_driver(self):
-        chrome_options = webdriver.ChromeOptions()
-        headless = False
-        if headless:
-            chrome_options.add_argument("--headless")
-        if chrome_options:
-            self._driver = webdriver.Chrome(options=chrome_options)
+    instance = None
+    driver = None
+
+    def __new__(cls):
+        if cls.instance is None:
+            cls.instance = super(DriverFactory, cls).__new__(cls)
+            return cls.instance
         else:
-            self._driver = webdriver.Chrome()
+            return cls.instance
 
-    def __get_driver(self):
-        return self._driver
+    def __init__(self):
+        if self.driver is None:
+            self.create_driver()
+
+    def create_driver(self):
+        """Create driver method
+        - Single responsibility principle to create driver instance"""
+        self.driver = webdriver
+
+    def get_driver(self):
+        """Get driver method
+        - Single responsibility principle to get driver instance"""
+        return self.driver.Chrome()

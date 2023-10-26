@@ -1,0 +1,203 @@
+[
+    {
+        "label": "wait",
+        "importPath": "os",
+        "description": "os",
+        "isExtraImport": true,
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "webdriver",
+        "importPath": "selenium",
+        "description": "selenium",
+        "isExtraImport": true,
+        "detail": "selenium",
+        "documentation": {}
+    },
+    {
+        "label": "webdriver",
+        "importPath": "selenium",
+        "description": "selenium",
+        "isExtraImport": true,
+        "detail": "selenium",
+        "documentation": {}
+    },
+    {
+        "label": "By",
+        "importPath": "selenium.webdriver.common.by",
+        "description": "selenium.webdriver.common.by",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.by",
+        "documentation": {}
+    },
+    {
+        "label": "By",
+        "importPath": "selenium.webdriver.common.by",
+        "description": "selenium.webdriver.common.by",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.by",
+        "documentation": {}
+    },
+    {
+        "label": "Keys",
+        "importPath": "selenium.webdriver.common.keys",
+        "description": "selenium.webdriver.common.keys",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.keys",
+        "documentation": {}
+    },
+    {
+        "label": "expected_conditions",
+        "importPath": "selenium.webdriver.support",
+        "description": "selenium.webdriver.support",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support",
+        "documentation": {}
+    },
+    {
+        "label": "WebDriverWait",
+        "importPath": "selenium.webdriver.support.ui",
+        "description": "selenium.webdriver.support.ui",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support.ui",
+        "documentation": {}
+    },
+    {
+        "label": "DriverFactory",
+        "importPath": "utils.driver_utils.driver_factory",
+        "description": "utils.driver_utils.driver_factory",
+        "isExtraImport": true,
+        "detail": "utils.driver_utils.driver_factory",
+        "documentation": {}
+    },
+    {
+        "label": "DriverFactory",
+        "importPath": "utils.driver_utils.driver_factory",
+        "description": "utils.driver_utils.driver_factory",
+        "isExtraImport": true,
+        "detail": "utils.driver_utils.driver_factory",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "BasePage",
+        "importPath": "bases.base_page",
+        "description": "bases.base_page",
+        "isExtraImport": true,
+        "detail": "bases.base_page",
+        "documentation": {}
+    },
+    {
+        "label": "WebFormPage",
+        "importPath": "pages.web_form_page",
+        "description": "pages.web_form_page",
+        "isExtraImport": true,
+        "detail": "pages.web_form_page",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "TestBase",
+        "importPath": "bases.base_test",
+        "description": "bases.base_test",
+        "isExtraImport": true,
+        "detail": "bases.base_test",
+        "documentation": {}
+    },
+    {
+        "label": "WebFormSteps",
+        "importPath": "steps.web_form_steps",
+        "description": "steps.web_form_steps",
+        "isExtraImport": true,
+        "detail": "steps.web_form_steps",
+        "documentation": {}
+    },
+    {
+        "label": "BasePage",
+        "kind": 6,
+        "importPath": "bases.base_page",
+        "description": "bases.base_page",
+        "peekOfCode": "class BasePage:\n    base_url = \"https://www.selenium.dev/selenium/web\"\n    by = By\n    def __init__(self, driver: DriverFactory):\n        self.driver = driver.driver\n        self.timeout = 20\n    def open_base_url(self, prefix_url=base_url):\n        \"\"\"Open the base URL\"\"\"\n        self.driver.get(self.base_url + prefix_url)\n    def wait_element_be_displayed(self, by: By, locator):",
+        "detail": "bases.base_page",
+        "documentation": {}
+    },
+    {
+        "label": "TestBase",
+        "kind": 6,
+        "importPath": "bases.base_test",
+        "description": "bases.base_test",
+        "peekOfCode": "class TestBase:\n    def setup(self):\n        self.driver = DriverFactory()\n    def teardown(self):\n        self.driver.driver.close()\n        self.driver.driver.quit()",
+        "detail": "bases.base_test",
+        "documentation": {}
+    },
+    {
+        "label": "Browsers",
+        "kind": 6,
+        "importPath": "enums.browsers",
+        "description": "enums.browsers",
+        "peekOfCode": "class Browsers(Enum):\n    chrome = \"Chrome\"\n    edge = \"Edge\"\n    ie = \"IExplorer\"\n    firefox = \"Firefox\"\n    safari = \"Safari\"",
+        "detail": "enums.browsers",
+        "documentation": {}
+    },
+    {
+        "label": "WebFormPage",
+        "kind": 6,
+        "importPath": "pages.web_form_page",
+        "description": "pages.web_form_page",
+        "peekOfCode": "class WebFormPage(BasePage):\n    text_input = \"my-text-id\"\n    submit_button = \"button\"\n    message = \"message\"\n    prefix_url = \"/web-form.html\"\n    def openWebFormPage(self):\n        self.open_base_url(self.prefix_url)\n    def textInputField(self, input_string):\n        self.write(self.by.ID, self.text_input, input_string)\n    def submitButton(self):",
+        "detail": "pages.web_form_page",
+        "documentation": {}
+    },
+    {
+        "label": "WebFormSteps",
+        "kind": 6,
+        "importPath": "steps.web_form_steps",
+        "description": "steps.web_form_steps",
+        "peekOfCode": "class WebFormSteps(WebFormPage):\n    def submitTextIntoTextInputField(self, text_input: str):\n        self.textInputField(text_input)\n        self.submitButton()",
+        "detail": "steps.web_form_steps",
+        "documentation": {}
+    },
+    {
+        "label": "TestSeleniumWebForm",
+        "kind": 6,
+        "importPath": "test.selenium_webform_test",
+        "description": "test.selenium_webform_test",
+        "peekOfCode": "class TestSeleniumWebForm(TestBase):\n    \"\"\"Demo test for Selenium Web Form\"\"\"\n    @pytest.mark.parametrize(\"search_term\", [\"Selenium\", \"Python\", \"PyTest\"])\n    def test_selenium_form(self, search_term):\n        \"\"\"Parametrization using decorators\"\"\"\n        driver = self.driver.driver\n        driver.get(\"https://www.selenium.dev/selenium/web/web-form.html\")\n        title = driver.title\n        assert title == \"Web form\"\n        driver.implicitly_wait(5)",
+        "detail": "test.selenium_webform_test",
+        "documentation": {}
+    },
+    {
+        "label": "DriverFactory",
+        "kind": 6,
+        "importPath": "utils.driver_utils.driver_factory",
+        "description": "utils.driver_utils.driver_factory",
+        "peekOfCode": "class DriverFactory:\n    \"\"\"\"\"\"\n    instance = None\n    driver = None\n    def __new__(cls, *args):\n        if cls.instance is None:\n            cls.instance = super(DriverFactory, cls).__new__(cls)\n            return cls.instance\n        else:\n            return cls.instance",
+        "detail": "utils.driver_utils.driver_factory",
+        "documentation": {}
+    }
+]

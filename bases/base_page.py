@@ -1,20 +1,25 @@
-from os import wait
+"""Base Page module for pages implementing"""
+from xml.dom import NotFoundErr
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-from utils.driver_utils.driver_factory import DriverFactory
-
 
 class BasePage:
+    """# Base Page class
+    - Implements all necessary methods to create a new page or steps
+    - This class waits for a WebDriver instance type
+    - As long it's a instance from WebDriver, the driver don't matter
+    - It could be any of WebDriver instance, like Firefox or Edge
+    """
+
     base_url = "https://www.selenium.dev/selenium/web"
     by = By
 
-    def __init__(self, driver: DriverFactory):
-        self.driver = driver.driver
+    def __init__(self, driver: webdriver.Chrome):
+        self.driver = driver
         self.timeout = 20
 
     def open_base_url(self, prefix_url=base_url):
@@ -28,8 +33,8 @@ class BasePage:
             visible = self.driver.find_element(by, locator)
             element = wait.until(lambda d: visible.is_displayed())
             return element
-        except Exception("Could not find displayed element"):
-            return Exception
+        except NotFoundErr(f"Element {element} not displayed!") as nde:
+            return nde
 
     def wait_element_be_present(self, by: By, locator):
         """Wait for and return the element(s) selected by css_selector."""
@@ -38,8 +43,8 @@ class BasePage:
                 EC.presence_of_element_located((by, locator))
             )
             return element
-        except Exception("Could not find presence of element"):
-            return Exception
+        except NotFoundErr(f"Element {element} not present") as npe:
+            return npe
 
     def click(self, by: By, locator):
         """Click a element"""
