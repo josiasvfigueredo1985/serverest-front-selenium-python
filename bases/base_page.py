@@ -1,4 +1,5 @@
 """Base Page module for pages implementing"""
+
 from xml.dom import NotFoundErr
 
 from selenium import webdriver
@@ -26,6 +27,10 @@ class BasePage:
         """Open the base URL"""
         self.driver.get(self.base_url + prefix_url)
 
+    def take_screenshot_error(self, locator):
+        """Take a screenshot when some error occurs"""
+        self.driver.save_screenshot(f"element_{locator}_on_{self.driver.title}.png")
+
     def wait_element_be_displayed(self, by: By, locator):
         """Wait for and return the element(s) selected by css_selector."""
         try:
@@ -34,6 +39,7 @@ class BasePage:
             element = wait.until(lambda d: visible.is_displayed())
             return element
         except NotFoundErr(f"Element {element} not displayed!") as nde:
+            self.take_screenshot_error(locator)
             return nde
 
     def wait_element_be_present(self, by: By, locator):
@@ -44,6 +50,7 @@ class BasePage:
             )
             return element
         except NotFoundErr(f"Element {element} not present") as npe:
+            self.take_screenshot_error(locator)
             return npe
 
     def click(self, by: By, locator):

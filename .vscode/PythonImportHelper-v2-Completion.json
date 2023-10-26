@@ -1,10 +1,10 @@
 [
     {
-        "label": "wait",
-        "importPath": "os",
-        "description": "os",
+        "label": "NotFoundErr",
+        "importPath": "xml.dom",
+        "description": "xml.dom",
         "isExtraImport": true,
-        "detail": "os",
+        "detail": "xml.dom",
         "documentation": {}
     },
     {
@@ -37,14 +37,6 @@
         "description": "selenium.webdriver.common.by",
         "isExtraImport": true,
         "detail": "selenium.webdriver.common.by",
-        "documentation": {}
-    },
-    {
-        "label": "Keys",
-        "importPath": "selenium.webdriver.common.keys",
-        "description": "selenium.webdriver.common.keys",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.common.keys",
         "documentation": {}
     },
     {
@@ -61,14 +53,6 @@
         "description": "selenium.webdriver.support.ui",
         "isExtraImport": true,
         "detail": "selenium.webdriver.support.ui",
-        "documentation": {}
-    },
-    {
-        "label": "DriverFactory",
-        "importPath": "utils.driver_utils.driver_factory",
-        "description": "utils.driver_utils.driver_factory",
-        "isExtraImport": true,
-        "detail": "utils.driver_utils.driver_factory",
         "documentation": {}
     },
     {
@@ -142,7 +126,7 @@
         "kind": 6,
         "importPath": "bases.base_page",
         "description": "bases.base_page",
-        "peekOfCode": "class BasePage:\n    base_url = \"https://www.selenium.dev/selenium/web\"\n    by = By\n    def __init__(self, driver: DriverFactory):\n        self.driver = driver.driver\n        self.timeout = 20\n    def open_base_url(self, prefix_url=base_url):\n        \"\"\"Open the base URL\"\"\"\n        self.driver.get(self.base_url + prefix_url)\n    def wait_element_be_displayed(self, by: By, locator):",
+        "peekOfCode": "class BasePage:\n    \"\"\"# Base Page class\n    - Implements all necessary methods to create a new page or steps\n    - This class waits for a WebDriver instance type\n    - As long it's a instance from WebDriver, the driver don't matter\n    - It could be any of WebDriver instance, like Firefox or Edge\n    \"\"\"\n    base_url = \"https://www.selenium.dev/selenium/web\"\n    by = By\n    def __init__(self, driver: webdriver.Chrome):",
         "detail": "bases.base_page",
         "documentation": {}
     },
@@ -151,7 +135,7 @@
         "kind": 6,
         "importPath": "bases.base_test",
         "description": "bases.base_test",
-        "peekOfCode": "class TestBase:\n    def setup(self):\n        self.driver = DriverFactory()\n    def teardown(self):\n        self.driver.driver.close()\n        self.driver.driver.quit()",
+        "peekOfCode": "class TestBase:\n    \"\"\"# Test Base class\n    - Organize the test execution for all the test class that inherit from this class\"\"\"\n    driver = None\n    def setup(self):\n        \"\"\"Setup method to instance driver from Driver Factory\"\"\"\n        browser = DriverFactory()\n        self.driver = browser.get_driver()\n    def teardown(self):\n        \"\"\"Teardown method to close and quit the driver\"\"\"",
         "detail": "bases.base_test",
         "documentation": {}
     },
@@ -160,7 +144,7 @@
         "kind": 6,
         "importPath": "enums.browsers",
         "description": "enums.browsers",
-        "peekOfCode": "class Browsers(Enum):\n    chrome = \"Chrome\"\n    edge = \"Edge\"\n    ie = \"IExplorer\"\n    firefox = \"Firefox\"\n    safari = \"Safari\"",
+        "peekOfCode": "class Browsers(Enum):\n    \"\"\"# Enums for Browsers driver types\"\"\"\n    CHROME = \"Chrome\"\n    CHROMIUN_EDGE = \"Chromium Edge\"\n    EDGE = \"Edge\"\n    FIREFOX = \"Firefox\"\n    IE = \"IExplorer\"\n    SAFARI = \"Safari\"",
         "detail": "enums.browsers",
         "documentation": {}
     },
@@ -169,7 +153,7 @@
         "kind": 6,
         "importPath": "pages.web_form_page",
         "description": "pages.web_form_page",
-        "peekOfCode": "class WebFormPage(BasePage):\n    text_input = \"my-text-id\"\n    submit_button = \"button\"\n    message = \"message\"\n    prefix_url = \"/web-form.html\"\n    def openWebFormPage(self):\n        self.open_base_url(self.prefix_url)\n    def textInputField(self, input_string):\n        self.write(self.by.ID, self.text_input, input_string)\n    def submitButton(self):",
+        "peekOfCode": "class WebFormPage(BasePage):\n    \"\"\"Web Form page attributes and methods\"\"\"\n    text_input = \"my-text-id\"\n    submit_button = \"button\"\n    message = \"message\"\n    prefix_url = \"/web-form.html\"\n    def open_web_form_page(self):\n        \"\"\"Open Web Form page calling the open_base_url method\n        - Page prefix is passed as argument\"\"\"\n        self.open_base_url(self.prefix_url)",
         "detail": "pages.web_form_page",
         "documentation": {}
     },
@@ -178,7 +162,7 @@
         "kind": 6,
         "importPath": "steps.web_form_steps",
         "description": "steps.web_form_steps",
-        "peekOfCode": "class WebFormSteps(WebFormPage):\n    def submitTextIntoTextInputField(self, text_input: str):\n        self.textInputField(text_input)\n        self.submitButton()",
+        "peekOfCode": "class WebFormSteps(WebFormPage):\n    \"\"\"Web Form Steps\"\"\"\n    def submit_text_into_text_input_field(self, text_input: str):\n        \"\"\"Web Form Steps\"\"\"\n        self.text_input_field(text_input)\n        self.click_submit_button()",
         "detail": "steps.web_form_steps",
         "documentation": {}
     },
@@ -187,7 +171,7 @@
         "kind": 6,
         "importPath": "test.selenium_webform_test",
         "description": "test.selenium_webform_test",
-        "peekOfCode": "class TestSeleniumWebForm(TestBase):\n    \"\"\"Demo test for Selenium Web Form\"\"\"\n    @pytest.mark.parametrize(\"search_term\", [\"Selenium\", \"Python\", \"PyTest\"])\n    def test_selenium_form(self, search_term):\n        \"\"\"Parametrization using decorators\"\"\"\n        driver = self.driver.driver\n        driver.get(\"https://www.selenium.dev/selenium/web/web-form.html\")\n        title = driver.title\n        assert title == \"Web form\"\n        driver.implicitly_wait(5)",
+        "peekOfCode": "class TestSeleniumWebForm(TestBase):\n    \"\"\"Demo test for Selenium Web Form\"\"\"\n    @pytest.mark.parametrize(\"search_term\", [\"Selenium\", \"Python\", \"PyTest\"])\n    def test_selenium_form(self, search_term):\n        \"\"\"Parametrization using decorators\"\"\"\n        driver = self.driver\n        driver.get(\"https://www.selenium.dev/selenium/web/web-form.html\")\n        title = driver.title\n        assert title == \"Web form\"\n        driver.implicitly_wait(5)",
         "detail": "test.selenium_webform_test",
         "documentation": {}
     },
@@ -196,7 +180,7 @@
         "kind": 6,
         "importPath": "utils.driver_utils.driver_factory",
         "description": "utils.driver_utils.driver_factory",
-        "peekOfCode": "class DriverFactory:\n    \"\"\"\"\"\"\n    instance = None\n    driver = None\n    def __new__(cls, *args):\n        if cls.instance is None:\n            cls.instance = super(DriverFactory, cls).__new__(cls)\n            return cls.instance\n        else:\n            return cls.instance",
+        "peekOfCode": "class DriverFactory:\n    \"\"\"# Driver Factory for Selenium WebDriver\n    - Singleton instance\n    - Can create instance for specific driver such as Chrome or Firefox\n    \"\"\"\n    instance = None\n    driver = None\n    def __new__(cls):\n        if cls.instance is None:\n            cls.instance = super(DriverFactory, cls).__new__(cls)",
         "detail": "utils.driver_utils.driver_factory",
         "documentation": {}
     }

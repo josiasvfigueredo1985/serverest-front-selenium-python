@@ -1,6 +1,7 @@
 # Automation with Selenium and Python
 
 - Test orchestrator: Pytest
+- Dependencies manager: pip
 
 # Test Design Pattern
 
