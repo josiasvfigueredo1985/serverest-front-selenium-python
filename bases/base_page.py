@@ -6,7 +6,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-from utils.driver_factory import DriverFactory
+from utils.driver_utils.driver_factory import DriverFactory
 
 
 class BasePage:

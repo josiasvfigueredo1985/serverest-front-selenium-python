@@ -4,12 +4,11 @@ import pytest
 from selenium.webdriver.common.by import By
 
 from bases.base_test import TestBase
-from pages.web_form_page import WebFormPage
 from steps.web_form_steps import WebFormSteps
 
 
-class TestSeleniumForm(TestBase):
-    """Demo test for Selenium Form"""
+class TestSeleniumWebForm(TestBase):
+    """Demo test for Selenium Web Form"""
 
     @pytest.mark.parametrize("search_term", ["Selenium", "Python", "PyTest"])
     def test_selenium_form(self, search_term):
@@ -30,7 +29,8 @@ class TestSeleniumForm(TestBase):
 
     @pytest.mark.parametrize("search_term", ["Selenium", "Python", "PyTest"])
     def test_selenium_web_form(self, search_term):
-        """Parametrization using decorators"""
+        """Parametrization using decorators
+        - Test adjusted using POM"""
         form = WebFormSteps(self.driver)
         form.openWebFormPage()
         title = form.getWebFormTitle()

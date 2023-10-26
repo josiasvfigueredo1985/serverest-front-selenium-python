@@ -1,4 +1,4 @@
-from utils.driver_factory import DriverFactory
+from utils.driver_utils.driver_factory import DriverFactory
 
 
 class TestBase:
