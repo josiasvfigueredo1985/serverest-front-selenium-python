@@ -5,7 +5,8 @@
   "python.testing.pytestArgs": [
     "test",
     "--html-report=./reports/html_report",
-    "--title=PYTEST REPORT"
+    "--title=PYTEST REPORT",
+    "--alluredir=./reports/allure_report",
   ],
   "python.testing.unittestEnabled": false,
   "python.testing.pytestEnabled": true,

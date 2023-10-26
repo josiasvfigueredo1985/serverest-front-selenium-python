@@ -12,6 +12,7 @@ class TestBase:
     reports_folder = "reports/"
     not_found_errors_folder = "not_found_errors/"
     html_report_folder = "html_report/"
+    allure_report_folder = "allure_report/"
 
     def setup(self):
         """Setup method to instance driver from Driver Factory"""
@@ -26,6 +27,7 @@ class TestBase:
             self.reports_folder + self.not_found_errors_folder
         )
         self.general.create_directory(self.reports_folder + self.html_report_folder)
+        self.general.create_directory(self.reports_folder + self.allure_report_folder)
 
     def remove_test_report_folders(self):
         """Remove reports_folder and its child folders and content"""
