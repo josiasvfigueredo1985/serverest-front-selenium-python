@@ -177,7 +177,7 @@
         "kind": 6,
         "importPath": "bases.base_test",
         "description": "bases.base_test",
-        "peekOfCode": "class TestBase:\n    \"\"\"# Test Base class\n    - Organize the test execution for all the test class that inherit from this class\"\"\"\n    driver = None\n    general = general\n    reports_folder = \"reports/\"\n    not_found_errors_folder = \"not_found_errors/\"\n    html_report_folder = \"html_report/\"\n    def setup(self):\n        \"\"\"Setup method to instance driver from Driver Factory\"\"\"",
+        "peekOfCode": "class TestBase:\n    \"\"\"# Test Base class\n    - Organize the test execution for all the test class that inherit from this class\"\"\"\n    driver = None\n    general = general\n    reports_folder = \"reports/\"\n    not_found_errors_folder = \"not_found_errors/\"\n    html_report_folder = \"html_report/\"\n    allure_report_folder = \"allure_report/\"\n    def setup(self):",
         "detail": "bases.base_test",
         "documentation": {}
     },

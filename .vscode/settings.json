@@ -6,7 +6,7 @@
     "test",
     "--html-report=./reports/html_report",
     "--title=PYTEST REPORT",
-    "--alluredir=./reports/allure_report",
+    "--alluredir=./reports/allure_report"
   ],
   "python.testing.unittestEnabled": false,
   "python.testing.pytestEnabled": true,
