@@ -155,6 +155,15 @@
         "documentation": {}
     },
     {
+        "label": "shutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
+        "documentation": {}
+    },
+    {
         "label": "BasePage",
         "kind": 6,
         "importPath": "bases.base_page",
@@ -168,7 +177,7 @@
         "kind": 6,
         "importPath": "bases.base_test",
         "description": "bases.base_test",
-        "peekOfCode": "class TestBase:\n    \"\"\"# Test Base class\n    - Organize the test execution for all the test class that inherit from this class\"\"\"\n    driver = None\n    general = general\n    report_folder=\"reports/not_found_errors\"\n    def setup(self):\n        \"\"\"Setup method to instance driver from Driver Factory\"\"\"\n        browser = DriverFactory()\n        self.driver = browser.get_driver()",
+        "peekOfCode": "class TestBase:\n    \"\"\"# Test Base class\n    - Organize the test execution for all the test class that inherit from this class\"\"\"\n    driver = None\n    general = general\n    reports_folder = \"reports/\"\n    not_found_errors_folder = \"not_found_errors/\"\n    html_report_folder = \"html_report/\"\n    def setup(self):\n        \"\"\"Setup method to instance driver from Driver Factory\"\"\"",
         "detail": "bases.base_test",
         "documentation": {}
     },
@@ -222,7 +231,16 @@
         "kind": 2,
         "importPath": "utils.general.general",
         "description": "utils.general.general",
-        "peekOfCode": "def create_directory(directory: str):\n    \"\"\"Create a directory\n    - Can create a directory three\n    - Can create a single directory\"\"\"\n    parent_dir = root_dir\n    path = os.path.join(parent_dir, directory)\n    os.makedirs(path)",
+        "peekOfCode": "def create_directory(directory: str):\n    \"\"\"Create a directory\n    - Can create a directory three\n    - Can create a single directory\"\"\"\n    parent_dir = root_dir\n    path = os.path.join(parent_dir, directory)\n    os.makedirs(path)\ndef remove_directory(directory: str):\n    \"\"\"Remove a directory\"\"\"\n    parent_dir = root_dir",
+        "detail": "utils.general.general",
+        "documentation": {}
+    },
+    {
+        "label": "remove_directory",
+        "kind": 2,
+        "importPath": "utils.general.general",
+        "description": "utils.general.general",
+        "peekOfCode": "def remove_directory(directory: str):\n    \"\"\"Remove a directory\"\"\"\n    parent_dir = root_dir\n    path = os.path.join(parent_dir, directory)\n    shutil.rmtree(path)",
         "detail": "utils.general.general",
         "documentation": {}
     },
@@ -231,7 +249,7 @@
         "kind": 5,
         "importPath": "utils.general.general",
         "description": "utils.general.general",
-        "peekOfCode": "root_dir = os.path.abspath(os.curdir)\ndef create_directory(directory: str):\n    \"\"\"Create a directory\n    - Can create a directory three\n    - Can create a single directory\"\"\"\n    parent_dir = root_dir\n    path = os.path.join(parent_dir, directory)\n    os.makedirs(path)",
+        "peekOfCode": "root_dir = os.path.abspath(os.curdir)\ndef create_directory(directory: str):\n    \"\"\"Create a directory\n    - Can create a directory three\n    - Can create a single directory\"\"\"\n    parent_dir = root_dir\n    path = os.path.join(parent_dir, directory)\n    os.makedirs(path)\ndef remove_directory(directory: str):\n    \"\"\"Remove a directory\"\"\"",
         "detail": "utils.general.general",
         "documentation": {}
     }
