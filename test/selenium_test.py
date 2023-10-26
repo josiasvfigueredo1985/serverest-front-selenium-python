@@ -4,6 +4,8 @@ import pytest
 from selenium.webdriver.common.by import By
 
 from bases.base_test import TestBase
+from pages.web_form_page import WebFormPage
+from steps.web_form_steps import WebFormSteps
 
 
 class TestSeleniumForm(TestBase):
@@ -12,7 +14,7 @@ class TestSeleniumForm(TestBase):
     @pytest.mark.parametrize("search_term", ["Selenium", "Python", "PyTest"])
     def test_selenium_form(self, search_term):
         """Parametrization using decorators"""
-        driver = self.driver
+        driver = self.driver.driver
         driver.get("https://www.selenium.dev/selenium/web/web-form.html")
         title = driver.title
         assert title == "Web form"
@@ -25,3 +27,13 @@ class TestSeleniumForm(TestBase):
         message = driver.find_element(by=By.ID, value="message")
         text = message.text
         assert text == "Received!"
+
+    @pytest.mark.parametrize("search_term", ["Selenium", "Python", "PyTest"])
+    def test_selenium_web_form(self, search_term):
+        """Parametrization using decorators"""
+        form = WebFormSteps(self.driver)
+        form.openWebFormPage()
+        title = form.getWebFormTitle()
+        assert title == "Web form"
+        form.submitTextIntoTextInputField(search_term)
+        assert form.getFormSubmittedMessage() == "Received!"
