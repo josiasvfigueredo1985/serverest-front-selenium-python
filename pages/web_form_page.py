@@ -5,9 +5,10 @@ from bases.base_page import BasePage
 class WebFormPage(BasePage):
     """Web Form page attributes and methods"""
 
-    text_input = "my-text-id"
-    submit_button = "button"
-    message = "message"
+    by = BasePage.by
+    text_input = (by.ID, "my-text-id")
+    submit_button = (by.CSS_SELECTOR, "button")
+    message = (by.ID, "message")
     prefix_url = "/web-form.html"
 
     def open_web_form_page(self):
@@ -17,15 +18,15 @@ class WebFormPage(BasePage):
 
     def text_input_field(self, input_string):
         """Text input field"""
-        self.write(self.by.ID, self.text_input, input_string)
+        self.write(*self.text_input, input_string)
 
     def click_submit_button(self):
         """Click Submit button"""
-        self.click(self.by.CSS_SELECTOR, self.submit_button)
+        self.click(*self.submit_button)
 
     def get_form_submitted_message(self) -> str:
         """Get the form submission message"""
-        return self.get_element_text(self.by.ID, self.message)
+        return self.get_element_text(*self.message)
 
     def get_web_form_title(self) -> str:
         """Get web form title"""

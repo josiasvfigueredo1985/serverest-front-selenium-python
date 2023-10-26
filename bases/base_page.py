@@ -11,6 +11,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 class BasePage:
     """# Base Page class
     - Implements all necessary methods to create a new page or steps
+    - All methods are generic and can be used for any class that inherits from BasePage class
     - This class waits for a WebDriver instance type
     - As long it's a instance from WebDriver, the driver don't matter
     - It could be any of WebDriver instance, like Firefox or Edge

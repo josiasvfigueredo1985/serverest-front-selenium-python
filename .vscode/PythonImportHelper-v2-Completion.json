@@ -126,7 +126,7 @@
         "kind": 6,
         "importPath": "bases.base_page",
         "description": "bases.base_page",
-        "peekOfCode": "class BasePage:\n    \"\"\"# Base Page class\n    - Implements all necessary methods to create a new page or steps\n    - This class waits for a WebDriver instance type\n    - As long it's a instance from WebDriver, the driver don't matter\n    - It could be any of WebDriver instance, like Firefox or Edge\n    \"\"\"\n    base_url = \"https://www.selenium.dev/selenium/web\"\n    by = By\n    def __init__(self, driver: webdriver.Chrome):",
+        "peekOfCode": "class BasePage:\n    \"\"\"# Base Page class\n    - Implements all necessary methods to create a new page or steps\n    - All methods are generic and can be used for any class that inherits from BasePage class\n    - This class waits for a WebDriver instance type\n    - As long it's a instance from WebDriver, the driver don't matter\n    - It could be any of WebDriver instance, like Firefox or Edge\n    \"\"\"\n    base_url = \"https://www.selenium.dev/selenium/web\"\n    by = By",
         "detail": "bases.base_page",
         "documentation": {}
     },
@@ -153,7 +153,7 @@
         "kind": 6,
         "importPath": "pages.web_form_page",
         "description": "pages.web_form_page",
-        "peekOfCode": "class WebFormPage(BasePage):\n    \"\"\"Web Form page attributes and methods\"\"\"\n    text_input = \"my-text-id\"\n    submit_button = \"button\"\n    message = \"message\"\n    prefix_url = \"/web-form.html\"\n    def open_web_form_page(self):\n        \"\"\"Open Web Form page calling the open_base_url method\n        - Page prefix is passed as argument\"\"\"\n        self.open_base_url(self.prefix_url)",
+        "peekOfCode": "class WebFormPage(BasePage):\n    \"\"\"Web Form page attributes and methods\"\"\"\n    by = BasePage.by\n    text_input = (by.ID, \"my-text-id\")\n    submit_button = (by.CSS_SELECTOR, \"button\")\n    message = (by.ID, \"message\")\n    prefix_url = \"/web-form.html\"\n    def open_web_form_page(self):\n        \"\"\"Open Web Form page calling the open_base_url method\n        - Page prefix is passed as argument\"\"\"",
         "detail": "pages.web_form_page",
         "documentation": {}
     },
