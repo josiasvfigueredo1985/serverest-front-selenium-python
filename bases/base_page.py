@@ -7,6 +7,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
+from bases.base_test import TestBase
+from utils.general import general
+
 
 class BasePage:
     """# Base Page class
@@ -19,6 +22,9 @@ class BasePage:
 
     base_url = "https://www.selenium.dev/selenium/web"
     by = By
+    root_directory = general.root_dir
+    report_folder = TestBase().reports_folder
+    count: int = 1
 
     def __init__(self, driver: webdriver.Chrome):
         self.driver = driver
@@ -30,7 +36,10 @@ class BasePage:
 
     def take_screenshot_error(self, locator):
         """Take a screenshot when some error occurs"""
-        self.driver.save_screenshot(f"element_{locator}_on_{self.driver.title}.png")
+        file_name = f"element_{self.count}_{locator}_on_{self.driver.title}.png"
+        file_path: str = f"{self.root_directory}/{self.report_folder}/{file_name}"
+        self.driver.save_screenshot(file_path)
+        self.count += 1
 
     def wait_element_be_displayed(self, by: By, locator):
         """Wait for and return the element(s) selected by css_selector."""

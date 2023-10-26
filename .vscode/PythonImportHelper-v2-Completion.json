@@ -56,6 +56,38 @@
         "documentation": {}
     },
     {
+        "label": "TestBase",
+        "importPath": "bases.base_test",
+        "description": "bases.base_test",
+        "isExtraImport": true,
+        "detail": "bases.base_test",
+        "documentation": {}
+    },
+    {
+        "label": "TestBase",
+        "importPath": "bases.base_test",
+        "description": "bases.base_test",
+        "isExtraImport": true,
+        "detail": "bases.base_test",
+        "documentation": {}
+    },
+    {
+        "label": "general",
+        "importPath": "utils.general",
+        "description": "utils.general",
+        "isExtraImport": true,
+        "detail": "utils.general",
+        "documentation": {}
+    },
+    {
+        "label": "general",
+        "importPath": "utils.general",
+        "description": "utils.general",
+        "isExtraImport": true,
+        "detail": "utils.general",
+        "documentation": {}
+    },
+    {
         "label": "DriverFactory",
         "importPath": "utils.driver_utils.driver_factory",
         "description": "utils.driver_utils.driver_factory",
@@ -106,19 +138,20 @@
         "documentation": {}
     },
     {
-        "label": "TestBase",
-        "importPath": "bases.base_test",
-        "description": "bases.base_test",
-        "isExtraImport": true,
-        "detail": "bases.base_test",
-        "documentation": {}
-    },
-    {
         "label": "WebFormSteps",
         "importPath": "steps.web_form_steps",
         "description": "steps.web_form_steps",
         "isExtraImport": true,
         "detail": "steps.web_form_steps",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
         "documentation": {}
     },
     {
@@ -135,7 +168,7 @@
         "kind": 6,
         "importPath": "bases.base_test",
         "description": "bases.base_test",
-        "peekOfCode": "class TestBase:\n    \"\"\"# Test Base class\n    - Organize the test execution for all the test class that inherit from this class\"\"\"\n    driver = None\n    def setup(self):\n        \"\"\"Setup method to instance driver from Driver Factory\"\"\"\n        browser = DriverFactory()\n        self.driver = browser.get_driver()\n    def teardown(self):\n        \"\"\"Teardown method to close and quit the driver\"\"\"",
+        "peekOfCode": "class TestBase:\n    \"\"\"# Test Base class\n    - Organize the test execution for all the test class that inherit from this class\"\"\"\n    driver = None\n    general = general\n    report_folder=\"reports/not_found_errors\"\n    def setup(self):\n        \"\"\"Setup method to instance driver from Driver Factory\"\"\"\n        browser = DriverFactory()\n        self.driver = browser.get_driver()",
         "detail": "bases.base_test",
         "documentation": {}
     },
@@ -182,6 +215,24 @@
         "description": "utils.driver_utils.driver_factory",
         "peekOfCode": "class DriverFactory:\n    \"\"\"# Driver Factory for Selenium WebDriver\n    - Singleton instance\n    - Can create instance for specific driver such as Chrome or Firefox\n    \"\"\"\n    instance = None\n    driver = None\n    def __new__(cls):\n        if cls.instance is None:\n            cls.instance = super(DriverFactory, cls).__new__(cls)",
         "detail": "utils.driver_utils.driver_factory",
+        "documentation": {}
+    },
+    {
+        "label": "create_directory",
+        "kind": 2,
+        "importPath": "utils.general.general",
+        "description": "utils.general.general",
+        "peekOfCode": "def create_directory(directory: str):\n    \"\"\"Create a directory\n    - Can create a directory three\n    - Can create a single directory\"\"\"\n    parent_dir = root_dir\n    path = os.path.join(parent_dir, directory)\n    os.makedirs(path)",
+        "detail": "utils.general.general",
+        "documentation": {}
+    },
+    {
+        "label": "root_dir",
+        "kind": 5,
+        "importPath": "utils.general.general",
+        "description": "utils.general.general",
+        "peekOfCode": "root_dir = os.path.abspath(os.curdir)\ndef create_directory(directory: str):\n    \"\"\"Create a directory\n    - Can create a directory three\n    - Can create a single directory\"\"\"\n    parent_dir = root_dir\n    path = os.path.join(parent_dir, directory)\n    os.makedirs(path)",
+        "detail": "utils.general.general",
         "documentation": {}
     }
 ]
