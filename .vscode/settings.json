@@ -2,12 +2,7 @@
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
-  "python.testing.pytestArgs": [
-    "test",
-    "--html-report=./reports/html_report",
-    "--title=PYTEST REPORT",
-    "--alluredir=./reports/allure_report"
-  ],
+  "python.testing.pytestArgs": ["test"],
   "python.testing.unittestEnabled": false,
   "python.testing.pytestEnabled": true,
   "tabnine.receiveBetaChannelUpdates": true

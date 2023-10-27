@@ -9,28 +9,21 @@ class TestBase:
 
     driver = None
     general = general
-    reports_folder = "reports/"
-    not_found_errors_folder = "not_found_errors/"
-    html_report_folder = "html_report/"
-    allure_report_folder = "allure_report/"
+    reports_folder = "./reports/not_found_errors"
 
     def setup(self):
         """Setup method to instance driver from Driver Factory"""
         browser = DriverFactory()
         self.driver = browser.get_driver()
-        self.remove_test_report_folders()
-        self.create_test_report_folders()
+        self.remove_not_found_errors_folder()
+        self.create_not_founnd_errors_folder()
 
-    def create_test_report_folders(self):
+    def create_not_founnd_errors_folder(self):
         """Create folders for reports and screenshots"""
-        self.general.create_directory(
-            self.reports_folder + self.not_found_errors_folder
-        )
-        self.general.create_directory(self.reports_folder + self.html_report_folder)
-        self.general.create_directory(self.reports_folder + self.allure_report_folder)
+        self.general.create_directory(self.reports_folder)
 
-    def remove_test_report_folders(self):
-        """Remove reports_folder and its child folders and content"""
+    def remove_not_found_errors_folder(self):
+        """Remove errors screenshots folder"""
         self.general.remove_directory(self.reports_folder)
 
     def teardown(self):
