@@ -1,9 +1,39 @@
 {
+  "todo-tree.customHighlight": {
+    "TODO": {
+      "icon": "check",
+      "type": "line",
+      "iconColour": "orange",
+      "foreground": "orange"
+    },
+    "DONE": {
+      "icon": "checkbox",
+      "type": "line",
+      "iconColour": "green",
+      "foreground": "green"
+    }
+  },
+
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
   "python.testing.pytestArgs": ["test"],
   "python.testing.unittestEnabled": false,
   "python.testing.pytestEnabled": true,
-  "tabnine.receiveBetaChannelUpdates": true
+  "tabnine.receiveBetaChannelUpdates": true,
+  "mdx-preview.preview.useVscodeMarkdownStyles": true,
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "icon": "check",
+      "type": "line",
+      "iconColour": "orange",
+      "foreground": "orange"
+    },
+    "DONE": {
+      "icon": "checkbox",
+      "type": "line",
+      "iconColour": "green",
+      "foreground": "green"
+    }
+  }
 }

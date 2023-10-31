@@ -1,0 +1,48 @@
+Pytest Test Automation Framework (TAF)
+
+TO-DO List
+
+DONE - Create basic structure
+DONE - Add Selenium and Pytest dependencies
+DONE - Create Base classes
+DONE - Create Driver factory class
+DONE - Refactoring Bases and Driver factory classes
+DONE - Refactoring dynamic wait for all BasePage methods  
+DONE - Add basic POM
+DONE - Add Singleton to Driver factory
+DONE - Add screenshot for not found element error
+DONE - Add HTML Report
+DONE - Add Allure Report
+TODO - Refactor Not found element to Selenium Exceptions
+TODO - Add video recording
+TODO - Add multiple browsers drivers
+TODO - Add cross browser drivers test strategy
+TODO - Refactor Driver class to MonoState pattern
+TODO - Isolate drivers by class
+TODO - Add SQL data base connections strings
+TODO - Add ORACLE data base connections strings
+TODO - Add MySQL data base connections strings
+TODO - Add PostGres data base connections strings
+TODO - Add Request API testing support
+TODO - Add Request GraphQL testing support
+TODO - Add Kafka Integration
+TODO - Add Data Driven generators
+TODO - Add Test Strategies generators
+TODO - Add Mobile view testing
+TODO - Add Appium integration
+TODO - Add CI/CD for Azure DevOps
+TODO - Add CI/CD for Azure Jenkins
+TODO - Add CI/CD for Azure GitHub Actions
+TODO - Add Docker integration
+TODO - Add Husky commit control
+TODO - Add Prettier Lint
+TODO - Add Editor.config
+TODO - Add Cucumber option
+TODO - Refactor tests to DSL
+TODO - Add Gherkin eslint
+TODO - Add BrowserStack mobile integration
+TODO - Add another mobile integration
+TODO - Add parallelism management
+TODO - Add user management with database integration
+TODO - Add execution mode management (Local and remote- identify when is executing locally or on pipeline)
+TODO - Add unit tests
