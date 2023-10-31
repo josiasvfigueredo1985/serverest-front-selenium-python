@@ -1,10 +1,19 @@
 [
     {
-        "label": "NotFoundErr",
-        "importPath": "xml.dom",
-        "description": "xml.dom",
+        "label": "is_enabled",
+        "importPath": "faulthandler",
+        "description": "faulthandler",
         "isExtraImport": true,
-        "detail": "xml.dom",
+        "detail": "faulthandler",
+        "documentation": {}
+    },
+    {
+        "label": "selenium.common.exceptions",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "selenium.common.exceptions",
+        "description": "selenium.common.exceptions",
+        "detail": "selenium.common.exceptions",
         "documentation": {}
     },
     {
@@ -169,6 +178,15 @@
         "importPath": "bases.base_page",
         "description": "bases.base_page",
         "peekOfCode": "class BasePage:\n    \"\"\"# Base Page class\n    - Implements all necessary methods to create a new page or steps\n    - All methods are generic and can be used for any class that inherits from BasePage class\n    - This class waits for a WebDriver instance type\n    - As long it's a instance from WebDriver, the driver don't matter\n    - It could be any of WebDriver instance, like Firefox or Edge\n    \"\"\"\n    base_url = \"https://www.selenium.dev/selenium/web\"\n    by = By",
+        "detail": "bases.base_page",
+        "documentation": {}
+    },
+    {
+        "label": "exception",
+        "kind": 5,
+        "importPath": "bases.base_page",
+        "description": "bases.base_page",
+        "peekOfCode": "exception = selenium.common.exceptions\nclass BasePage:\n    \"\"\"# Base Page class\n    - Implements all necessary methods to create a new page or steps\n    - All methods are generic and can be used for any class that inherits from BasePage class\n    - This class waits for a WebDriver instance type\n    - As long it's a instance from WebDriver, the driver don't matter\n    - It could be any of WebDriver instance, like Firefox or Edge\n    \"\"\"\n    base_url = \"https://www.selenium.dev/selenium/web\"",
         "detail": "bases.base_page",
         "documentation": {}
     },

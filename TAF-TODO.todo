@@ -13,7 +13,7 @@ DONE - Add Singleton to Driver factory
 DONE - Add screenshot for not found element error
 DONE - Add HTML Report
 DONE - Add Allure Report
-TODO - Refactor Not found element to Selenium Exceptions
+DONE - Refactor Not found element to Selenium Exceptions
 TODO - Add video recording
 TODO - Add multiple browsers drivers
 TODO - Add cross browser drivers test strategy

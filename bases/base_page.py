@@ -1,7 +1,8 @@
 """Base Page module for pages implementing"""
 
-from xml.dom import NotFoundErr
+from faulthandler import is_enabled
 
+import selenium.common.exceptions
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -9,6 +10,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 from bases.base_test import TestBase
 from utils.general import general
+
+exception = selenium.common.exceptions
 
 
 class BasePage:
@@ -41,16 +44,18 @@ class BasePage:
         self.driver.save_screenshot(file_path)
         self.count += 1
 
-    def wait_element_be_displayed(self, by: By, locator):
+    def wait_element_be_visible(self, by: By, locator):
         """Wait for and return the element(s) selected by css_selector."""
         try:
             wait = WebDriverWait(self.driver, self.timeout)
             visible = self.driver.find_element(by, locator)
             element = wait.until(lambda d: visible.is_displayed())
             return element
-        except NotFoundErr(f"Element {element} not displayed!") as nde:
+        except exception.ElementNotVisibleException(
+            f"Element {element} not visible!"
+        ) as nve:
             self.take_screenshot_error(locator)
-            return nde
+            return nve
 
     def wait_element_be_present(self, by: By, locator):
         """Wait for and return the element(s) selected by css_selector."""
@@ -59,29 +64,75 @@ class BasePage:
                 EC.presence_of_element_located((by, locator))
             )
             return element
-        except NotFoundErr(f"Element {element} not present") as npe:
+        except exception.NoSuchElementException(
+            f"Element {element} not present!"
+        ) as npe:
             self.take_screenshot_error(locator)
             return npe
 
+    def wait_element_be_enabled(self, by: By, locator):
+        """Wait for and return the element(s) selected by css_selector."""
+        try:
+            element = WebDriverWait(self.driver, self.timeout).until(
+                EC.element_located_selection_state_to_be((by, locator), is_enabled())
+            )
+            return element
+        except exception.ElementNotInteractableException(
+            f"Element {element} not enabled!"
+        ) as nee:
+            self.take_screenshot_error(locator)
+            return nee
+
+    def wait_element_be_clickable(self, by: By, locator):
+        """Wait for and return the element(s) selected by css_selector."""
+        try:
+            element = WebDriverWait(self.driver, self.timeout).until(
+                EC.element_to_be_clickable((by, locator))
+            )
+            return element
+        except exception.ElementNotVisibleException(
+            f"Element {element} not clickable!"
+        ) as nce:
+            self.take_screenshot_error(locator)
+            return nce
+
+    def check_enabled_element(self, by: By, locator) -> bool:
+        """Check if the element is enabled"""
+        return WebDriverWait(self.driver, self.timeout).until(
+            EC.element_located_selection_state_to_be((by, locator), is_enabled())
+        )
+
+    def check_invisible_element(self, by: By, locator) -> bool:
+        """Check if the element is invisible or not present"""
+        return WebDriverWait(self.driver, self.timeout).until(
+            EC.invisibility_of_element_located((by, locator))
+        )
+
+    def check_visible_element(self, by: By, locator) -> bool:
+        """Check if the element is invisible or not present"""
+        return WebDriverWait(self.driver, self.timeout).until(
+            EC.visibility_of_element_located((by, locator))
+        )
+
     def click(self, by: By, locator):
         """Click a element"""
-        self.wait_element_be_displayed(by, locator)
+        self.wait_element_be_clickable(by, locator)
         self.driver.find_element(by, locator).click()
 
     def write(self, by: By, locator, text):
         """Write text to input field"""
-        self.wait_element_be_displayed(by, locator)
+        self.wait_element_be_visible(by, locator)
         self.driver.find_element(by, locator).send_keys(text)
 
     def clear(self, by: By, locator):
         """Clear input field"""
-        self.wait_element_be_displayed(by, locator)
+        self.wait_element_be_visible(by, locator)
         self.driver.find_element(by, locator).clear()
 
     def upload_file(self, by: By, locator, filename):
         """Uploads a file
         - Filename must be provided as full path"""
-        self.wait_element_be_displayed(by, locator)
+        self.wait_element_be_visible(by, locator)
         self.driver.find_element(by, locator).send_keys(filename)
         self.driver.find_element(by, locator).submit()
         if any(
@@ -94,7 +145,7 @@ class BasePage:
 
     def get_element_text(self, by: By, locator) -> str:
         """Get the element text"""
-        self.wait_element_be_displayed(by, locator)
+        self.wait_element_be_visible(by, locator)
         el_text = self.driver.find_element(by, locator).text
         return el_text
 
