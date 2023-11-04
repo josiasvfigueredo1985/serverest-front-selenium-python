@@ -1,10 +1,19 @@
 [
     {
-        "label": "NotFoundErr",
-        "importPath": "xml.dom",
-        "description": "xml.dom",
+        "label": "is_enabled",
+        "importPath": "faulthandler",
+        "description": "faulthandler",
         "isExtraImport": true,
-        "detail": "xml.dom",
+        "detail": "faulthandler",
+        "documentation": {}
+    },
+    {
+        "label": "selenium.common.exceptions",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "selenium.common.exceptions",
+        "description": "selenium.common.exceptions",
+        "detail": "selenium.common.exceptions",
         "documentation": {}
     },
     {
@@ -173,11 +182,20 @@
         "documentation": {}
     },
     {
+        "label": "exception",
+        "kind": 5,
+        "importPath": "bases.base_page",
+        "description": "bases.base_page",
+        "peekOfCode": "exception = selenium.common.exceptions\nclass BasePage:\n    \"\"\"# Base Page class\n    - Implements all necessary methods to create a new page or steps\n    - All methods are generic and can be used for any class that inherits from BasePage class\n    - This class waits for a WebDriver instance type\n    - As long it's a instance from WebDriver, the driver don't matter\n    - It could be any of WebDriver instance, like Firefox or Edge\n    \"\"\"\n    base_url = \"https://www.selenium.dev/selenium/web\"",
+        "detail": "bases.base_page",
+        "documentation": {}
+    },
+    {
         "label": "TestBase",
         "kind": 6,
         "importPath": "bases.base_test",
         "description": "bases.base_test",
-        "peekOfCode": "class TestBase:\n    \"\"\"# Test Base class\n    - Organize the test execution for all the test class that inherit from this class\"\"\"\n    driver = None\n    general = general\n    reports_folder = \"reports/\"\n    not_found_errors_folder = \"not_found_errors/\"\n    html_report_folder = \"html_report/\"\n    def setup(self):\n        \"\"\"Setup method to instance driver from Driver Factory\"\"\"",
+        "peekOfCode": "class TestBase:\n    \"\"\"# Test Base class\n    - Organize the test execution for all the test class that inherit from this class\"\"\"\n    driver = None\n    general = general\n    reports_folder = \"./reports/not_found_errors\"\n    def setup(self):\n        \"\"\"Setup method to instance driver from Driver Factory\"\"\"\n        browser = DriverFactory()\n        self.driver = browser.get_driver()",
         "detail": "bases.base_test",
         "documentation": {}
     },
@@ -231,7 +249,7 @@
         "kind": 2,
         "importPath": "utils.general.general",
         "description": "utils.general.general",
-        "peekOfCode": "def create_directory(directory: str):\n    \"\"\"Create a directory\n    - Can create a directory three\n    - Can create a single directory\"\"\"\n    parent_dir = root_dir\n    path = os.path.join(parent_dir, directory)\n    os.makedirs(path)\ndef remove_directory(directory: str):\n    \"\"\"Remove a directory\"\"\"\n    parent_dir = root_dir",
+        "peekOfCode": "def create_directory(directory: str):\n    \"\"\"Create a directory\n    - Can create a directory three\n    - Can create a single directory\"\"\"\n    path = os.path.join(root_dir, directory)\n    if not directory_exists(path):\n        os.makedirs(path)\ndef remove_directory(directory: str):\n    \"\"\"Remove a directory\"\"\"\n    path = os.path.join(root_dir, directory)",
         "detail": "utils.general.general",
         "documentation": {}
     },
@@ -240,7 +258,25 @@
         "kind": 2,
         "importPath": "utils.general.general",
         "description": "utils.general.general",
-        "peekOfCode": "def remove_directory(directory: str):\n    \"\"\"Remove a directory\"\"\"\n    parent_dir = root_dir\n    path = os.path.join(parent_dir, directory)\n    shutil.rmtree(path)",
+        "peekOfCode": "def remove_directory(directory: str):\n    \"\"\"Remove a directory\"\"\"\n    path = os.path.join(root_dir, directory)\n    if directory_exists(path):\n        shutil.rmtree(path)\ndef directory_exists(path) -> bool:\n    \"\"\"Check if a directory exists\"\"\"\n    return True if os.path.isdir(path) else False\ndef file_or_directory_exists(path) -> bool:\n    \"\"\"Check if a file or directory exists\"\"\"",
+        "detail": "utils.general.general",
+        "documentation": {}
+    },
+    {
+        "label": "directory_exists",
+        "kind": 2,
+        "importPath": "utils.general.general",
+        "description": "utils.general.general",
+        "peekOfCode": "def directory_exists(path) -> bool:\n    \"\"\"Check if a directory exists\"\"\"\n    return True if os.path.isdir(path) else False\ndef file_or_directory_exists(path) -> bool:\n    \"\"\"Check if a file or directory exists\"\"\"\n    return True if os.path.exists(path) else False",
+        "detail": "utils.general.general",
+        "documentation": {}
+    },
+    {
+        "label": "file_or_directory_exists",
+        "kind": 2,
+        "importPath": "utils.general.general",
+        "description": "utils.general.general",
+        "peekOfCode": "def file_or_directory_exists(path) -> bool:\n    \"\"\"Check if a file or directory exists\"\"\"\n    return True if os.path.exists(path) else False",
         "detail": "utils.general.general",
         "documentation": {}
     },
@@ -249,7 +285,7 @@
         "kind": 5,
         "importPath": "utils.general.general",
         "description": "utils.general.general",
-        "peekOfCode": "root_dir = os.path.abspath(os.curdir)\ndef create_directory(directory: str):\n    \"\"\"Create a directory\n    - Can create a directory three\n    - Can create a single directory\"\"\"\n    parent_dir = root_dir\n    path = os.path.join(parent_dir, directory)\n    os.makedirs(path)\ndef remove_directory(directory: str):\n    \"\"\"Remove a directory\"\"\"",
+        "peekOfCode": "root_dir = os.path.abspath(os.curdir)\ndef create_directory(directory: str):\n    \"\"\"Create a directory\n    - Can create a directory three\n    - Can create a single directory\"\"\"\n    path = os.path.join(root_dir, directory)\n    if not directory_exists(path):\n        os.makedirs(path)\ndef remove_directory(directory: str):\n    \"\"\"Remove a directory\"\"\"",
         "detail": "utils.general.general",
         "documentation": {}
     }
