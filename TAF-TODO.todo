@@ -14,8 +14,8 @@ DONE - Add screenshot for not found element error
 DONE - Add HTML Report
 DONE - Add Allure Report
 DONE - Refactor Not found element to Selenium Exceptions
-TODO - Change from PIP to Poetry
-TODO - Add video recording
+DONE - Change from PIP to Poetry
+DONE - Add video recording methods
 TODO - Add multiple browsers drivers
 TODO - Add cross browser drivers test strategy
 TODO - Refactor Driver class to MonoState pattern

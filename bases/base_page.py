@@ -2,6 +2,7 @@
 
 from faulthandler import is_enabled
 
+import pyscreenrec
 import selenium.common.exceptions
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -12,6 +13,7 @@ from bases.base_test import TestBase
 from utils.general import general
 
 exception = selenium.common.exceptions
+recorder = pyscreenrec.ScreenRecorder()
 
 
 class BasePage:
@@ -32,6 +34,20 @@ class BasePage:
     def __init__(self, driver: webdriver.Chrome):
         self.driver = driver
         self.timeout = 20
+
+    def start_video_recording(self, path, fps):
+        """Record screen
+        - 'recording.mp4' is the name of the output video file,
+        may also contain full path like 'C:/Users/<user>/Videos/video.mp4'
+        - the second parameter(10) is the FPS.
+        You can specify the FPS for the screen recording using the second parameter.
+        It must not be greater than 60.
+        """
+        recorder.start_recording(path, fps)
+
+    def stop_video_recording(self):
+        """Stop screen recording"""
+        recorder.stop_recording()
 
     def open_base_url(self, prefix_url=base_url):
         """Open the base URL"""
