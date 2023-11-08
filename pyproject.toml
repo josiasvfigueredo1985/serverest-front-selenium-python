@@ -7,7 +7,7 @@ license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = ">=3.12,<3.13"
 allure-pytest = "2.13.2"
 allure-python-commons = "2.13.2"
 attrs = "23.1.0"
@@ -70,6 +70,15 @@ trove-classifiers = "2023.10.18"
 typer = "0.9.0"
 typing-extensions = "4.8.0"
 virtualenv = "20.24.6"
+easyprocess = "1.1"
+entrypoint2 = "1.1"
+mss = "9.0.1"
+natsort = "8.4.0"
+numpy = "1.26.1"
+opencv-python = "4.8.1.78"
+pyscreenrec = "0.4"
+pyscreenshot = "3.1"
+pyscreeze = "0.1.29"
 
 
 [build-system]
