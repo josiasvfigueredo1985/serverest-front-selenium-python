@@ -38,3 +38,7 @@ results to `reports/allure-results`.
 
 GitHub Actions runs the tests on Windows with Python 3.13 on pushes and pull
 requests. The generated reports are available as the `test-reports` artifact.
+On pushes to `main`, the HTML report is also published to GitHub Pages, including
+when tests fail. Enable **Settings > Pages > Build and deployment > Source >
+GitHub Actions** in the repository first. The run summary links to the latest
+published report; it may be publicly accessible depending on repository settings.

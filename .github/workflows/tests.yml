@@ -11,6 +11,8 @@ jobs:
   test:
     runs-on: windows-latest
     timeout-minutes: 15
+    outputs:
+      report_available: ${{ steps.report.outputs.available }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -21,6 +23,15 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Run tests
         run: python -m pytest
+      - name: Check HTML report
+        id: report
+        if: always()
+        run: |
+          if (Test-Path -PathType Leaf "reports/pytest_report/pytest_html_report.html") {
+            "available=true" >> $env:GITHUB_OUTPUT
+          } else {
+            "available=false" >> $env:GITHUB_OUTPUT
+          }
       - name: Upload reports
         if: always()
         uses: actions/upload-artifact@v4
@@ -28,3 +39,39 @@ jobs:
           name: test-reports
           path: reports/
           if-no-files-found: warn
+
+  publish-report:
+    needs: test
+    if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.test.result != 'cancelled' && needs.test.outputs.report_available == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Download reports
+        uses: actions/download-artifact@v4
+        with:
+          name: test-reports
+          path: reports
+      - name: Prepare HTML report
+        run: |
+          mkdir -p _site
+          cp reports/pytest_report/pytest_html_report.html _site/index.html
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy report
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Link report in run summary
+        env:
+          REPORT_URL: ${{ steps.deployment.outputs.page_url }}
+        run: echo "[View HTML test report]($REPORT_URL)" >> "$GITHUB_STEP_SUMMARY"
