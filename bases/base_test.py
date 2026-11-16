@@ -1,4 +1,6 @@
 """Test Base class"""
+from selenium.webdriver import Chrome
+
 from utils.driver_utils.driver_factory import DriverFactory
 from utils.general import general
 
@@ -7,7 +9,7 @@ class TestBase:
     """# Test Base class
     - Organize the test execution for all the test class that inherit from this class"""
 
-    driver = None
+    driver: Chrome
     general = general
     reports_folder = "./reports/not_found_errors"
 

@@ -1,7 +1,7 @@
 # Automation with Selenium and Python
 
 - Test orchestrator: Pytest
-- Dependencies manager: pip
+- Dependency installer: pip
 
 # Test Design Pattern
 
@@ -11,9 +11,30 @@
 
 - Responsible to define the main bahavior and attributes from test and page components
 
-#Comands
-create/update requirements.txt file with dependencies instaledd on the project
-pip freeze > requirements.txt
+## Install dependencies
 
-Add to pyproject.toml file all the dependencies from requirements.txt
-poetry add $( cat requirements.txt )
+Prerequisites: Python 3.13 and Google Chrome.
+
+Create a virtual environment and install the dependencies from
+`requirements.txt` (PowerShell):
+
+```powershell
+py -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
+
+## Run the tests
+
+Run the test suite with:
+
+```powershell
+pytest
+```
+
+Pytest is configured in `pytest.ini` to write the HTML report to
+`reports/pytest_report`, the log to `reports/logs/pytest-logs.txt`, and Allure
+results to `reports/allure-results`.
+
+GitHub Actions runs the tests on Windows with Python 3.13 on pushes and pull
+requests. The generated reports are available as the `test-reports` artifact.
